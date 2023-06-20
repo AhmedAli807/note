@@ -14,7 +14,7 @@ class NotesScreenBody extends StatelessWidget {
       ),
       child: Column(
         children: const  [
-            CustomAppBar(),
+            CustomAppBar(title: 'Notes App',icon: Icons.search,),
           NoteListView()
         ],
       ),

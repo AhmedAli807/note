@@ -8,7 +8,6 @@ class CustomBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var height=MediaQuery.of(context).size.height;
-    var width=MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0,
       horizontal: 16),
@@ -16,11 +15,11 @@ class CustomBottomSheet extends StatelessWidget {
         scrollDirection: Axis.vertical,
         child: Column(
           children:  [
-            CustomTextField(hint: 'Title'),
+           const  CustomTextField(hint: 'Title'),
             SizedBox(
               height: height*0.02,
             ),
-            CustomTextField(hint: 'Content',maxLine: 5,),
+            const CustomTextField(hint: 'Content',maxLine: 5,),
             SizedBox(
               height: height*0.03,
             ),
