@@ -10,7 +10,7 @@ class NotesScreen extends StatelessWidget {
     return  Scaffold(
       floatingActionButton:FloatingActionButton(onPressed:(){
         showModalBottomSheet(context: context, builder:(context){
-          return const CustomBottomSheet();
+          return  CustomBottomSheet();
         } ,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15)

@@ -11,9 +11,9 @@ part 'add_note_state.dart';
 class AddNoteBloc extends Bloc<AddNoteEvent, AddNoteState> {
   AddNoteBloc() : super(AddNoteInitial()) {
     on<AddNoteEvent>((event, emit) {
-      if(event is AddNoteEvent){
-        emit(AddNoteLoading());
+
       addNote(NoteModel note)async{
+        emit(AddNoteLoading());
         try {
           var notesBox =  Hive.box<NoteModel>(kNotesBox);
           emit(AddNoteSuccess());
@@ -21,7 +21,13 @@ class AddNoteBloc extends Bloc<AddNoteEvent, AddNoteState> {
         }catch(e){
 AddNoteFailure(errMessage: 'some thing went wrong');
         }
+        @override
+       void onTransition(Transition<AddNoteEvent,AddNoteState>transition){
+          super.onTransition(transition);
+          print(transition);
+        }
+
       }
-    }});
+    });
   }
 }
