@@ -8,12 +8,12 @@ print('change =$change') ;
 
   @override
   void onClose(BlocBase bloc) {
-    // TODO: implement onClose
+    print('close =$bloc');
   }
 
   @override
   void onCreate(BlocBase bloc) {
-    // TODO: implement onCreate
+print('create = $bloc');
   }
 
   @override

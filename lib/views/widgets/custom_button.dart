@@ -8,21 +8,24 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     var height =MediaQuery.of(context).size.height;
     var width =MediaQuery.of(context).size.width;
-    return Container(
-      height: height*0.08,
-      width: width*0.9,
-      decoration: BoxDecoration(
-        color: kPrimaryColor,
-        borderRadius: BorderRadius.circular(10)
-      ),
-      child: GestureDetector(
+    return
+       GestureDetector(
         onTap: onTap,
-        child: const Center(
-          child:  Text('Add',
-          style: TextStyle(fontSize: 20,
-          color: Colors.black),),
+        child:  Center(
+          child:  Container(
+            height: height*0.08,
+            width: width*0.9,
+            decoration: BoxDecoration(
+                color: kPrimaryColor,
+                borderRadius: BorderRadius.circular(10)
+            ),
+            child:  const Center(
+              child: Text('Add',
+              style: TextStyle(fontSize: 20,
+              color: Colors.black),),
+            ),
+          ),
         ),
-      ),
-    );
+      );
   }
 }

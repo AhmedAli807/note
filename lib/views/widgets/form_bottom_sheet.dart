@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled11/controller/add_note/add_note_bloc.dart';
+import 'package:untitled11/model/note_model.dart';
 import 'package:untitled11/views/widgets/custom_button.dart';
 import 'package:untitled11/views/widgets/custom_text_field.dart';
 
@@ -20,38 +23,40 @@ class _FormBottomSheetState extends State<FormBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
-      autovalidateMode: autoValidateMode,
-      child: Column(
-        children:  [
-          CustomTextField(hint: 'Title',onSaved: (value){
-            title=value;
-          },),
-          SizedBox(
-            height: widget.height*0.02,
-          ),
-          CustomTextField(hint: 'Content',maxLine: 5,onSaved: (value){
-            subtitle=value;
-          },),
-          SizedBox(
-            height: widget.height*0.03,
-          ),
-          CustomButton(onTap: (){
-            if(formKey.currentState!.validate()){
-              formKey.currentState!.save();
-            }
-            else{
-              autoValidateMode=AutovalidateMode.always;
-              setState(() {
+        key: formKey,
+        autovalidateMode: autoValidateMode,
+        child: Column(
+          children:  [
+            CustomTextField(hint: 'Title',onSaved: (value){
+              title=value;
+            },),
+            SizedBox(
+              height: widget.height*0.02,
+            ),
+            CustomTextField(hint: 'Content',maxLine: 5,onSaved: (value){
+              subtitle=value;
+            },),
+            SizedBox(
+              height: widget.height*0.03,
+            ),
+            CustomButton(onTap: (){
+              if(formKey.currentState!.validate()){
+                formKey.currentState!.save();
+                var noteModel= NoteModel(title: title!, subTitle: subtitle!, date: DateTime.now().toString(), color: Colors.blue.value);
+                BlocProvider.of<AddNoteBloc>(context).addNote(noteModel);
+              }
+              else{
+                autoValidateMode=AutovalidateMode.always;
+                setState(() {
 
-              });
-            }
-          },),
-          SizedBox(
-            height: widget.height*0.02,
-          )
-        ],
-      ),
-    );
+                });
+              }
+            },),
+            SizedBox(
+              height: widget.height*0.02,
+            )
+          ],
+        ),
+      );
   }
 }
