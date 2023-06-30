@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled11/controller/add_note/add_note_bloc.dart';
 import 'package:untitled11/views/widgets/form_bottom_sheet.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class CustomBottomSheet extends StatelessWidget {
   const CustomBottomSheet({Key? key}) : super(key: key);
@@ -16,8 +15,9 @@ class CustomBottomSheet extends StatelessWidget {
     return BlocProvider(
       create: (context) => AddNoteBloc(),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0,
-            horizontal: 16),
+        padding:  EdgeInsets.only(left: 16.0,
+            top: 16,
+            right: 16,bottom: MediaQuery.of(context).viewInsets.bottom),
         child: BlocConsumer<AddNoteBloc, AddNoteState>(
           listener: (context, state) {
             if (state is AddNoteFailure) {
@@ -28,8 +28,8 @@ class CustomBottomSheet extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            return ModalProgressHUD(
-                inAsyncCall: state is AddNoteLoading ? true : false,
+            return AbsorbPointer(
+                absorbing: state is AddNoteLoading ? true : false,
                 child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: FormBottomSheet(height: height)));

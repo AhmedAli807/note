@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:untitled11/constants.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({Key? key,this.onTap}) : super(key: key);
+  const CustomButton({Key? key,this.onTap,this.isLoading=false}) : super(key: key);
   final void Function()? onTap;
+  final bool isLoading;
 @override
   Widget build(BuildContext context) {
     var height =MediaQuery.of(context).size.height;
@@ -19,8 +20,14 @@ class CustomButton extends StatelessWidget {
                 color: kPrimaryColor,
                 borderRadius: BorderRadius.circular(10)
             ),
-            child:  const Center(
-              child: Text('Add',
+            child:   Center(
+              child: isLoading?SizedBox(
+                height: height*0.02,
+                width: width*0.03,
+                child: const CircularProgressIndicator(
+                  color: Colors.black,
+                ),
+              ):const Text('Add',
               style: TextStyle(fontSize: 20,
               color: Colors.black),),
             ),

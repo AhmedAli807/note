@@ -39,7 +39,11 @@ class _FormBottomSheetState extends State<FormBottomSheet> {
             SizedBox(
               height: widget.height*0.03,
             ),
-            CustomButton(onTap: (){
+            BlocBuilder<AddNoteBloc, AddNoteState>(
+  builder: (context, state) {
+    return CustomButton(
+              isLoading: state is AddNoteLoading?true:false,
+              onTap: (){
               if(formKey.currentState!.validate()){
                 formKey.currentState!.save();
                 var noteModel= NoteModel(title: title!, subTitle: subtitle!, date: DateTime.now().toString(), color: Colors.blue.value);
@@ -51,7 +55,9 @@ class _FormBottomSheetState extends State<FormBottomSheet> {
 
                 });
               }
-            },),
+            },);
+  },
+),
             SizedBox(
               height: widget.height*0.02,
             )
