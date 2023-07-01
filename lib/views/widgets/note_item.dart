@@ -48,7 +48,10 @@ final NoteModel note;
                          TrailingIconButton(icon:Icons.edit,color:Colors.black,onPressed: (){
                            Navigator.push(context, MaterialPageRoute(builder: (context)=>const EditViewBody()));
                          },),
-                         TrailingIconButton(icon:FontAwesomeIcons.trash,color:Colors.black,onPressed: (){},),
+                         TrailingIconButton(icon:FontAwesomeIcons.trash,color:Colors.black,onPressed: (){
+                           note.delete();
+
+                         },),
                        ],
                      ),
 
