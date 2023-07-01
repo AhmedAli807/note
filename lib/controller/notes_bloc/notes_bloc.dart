@@ -12,14 +12,13 @@ part 'notes_state.dart';
 
 class NotesBloc extends Bloc<NotesEvent, NotesState> {
   NotesBloc() : super(NotesInitial());
-  fetchAllNotes()async{
-    try {
-      var notesBox =  Hive.box<NoteModel>(kNotesBox);
-      List<NoteModel>notes=notesBox.values.toList();
+  List<NoteModel>?notes;
 
-      emit(NotesSuccess(notes: notes));
-    }catch(e){
-      emit(NotesFailure(errMsg: e.toString()));
-    }
+  fetchAllNotes(){
+
+      var notesBox =  Hive.box<NoteModel>(kNotesBox);
+      notes=notesBox.values.toList();
+
+
   }
 }

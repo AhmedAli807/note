@@ -4,9 +4,14 @@ import 'package:untitled11/controller/notes_bloc/notes_bloc.dart';
 import 'package:untitled11/views/widgets/custom_bottom_sheet.dart';
 import 'package:untitled11/views/widgets/notes_screen_body.dart';
 
-class NotesScreen extends StatelessWidget {
+class NotesScreen extends StatefulWidget {
   const NotesScreen({Key? key}) : super(key: key);
 
+  @override
+  State<NotesScreen> createState() => _NotesScreenState();
+}
+
+class _NotesScreenState extends State<NotesScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
