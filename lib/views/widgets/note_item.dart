@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:untitled11/controller/notes_bloc/notes_bloc.dart';
 import 'package:untitled11/model/note_model.dart';
 import 'package:untitled11/views/widgets/edit_body_view.dart';
 import 'package:untitled11/views/widgets/trailing_icon.dart';
@@ -50,7 +52,7 @@ final NoteModel note;
                          },),
                          TrailingIconButton(icon:FontAwesomeIcons.trash,color:Colors.black,onPressed: (){
                            note.delete();
-
+                           BlocProvider.of<NotesBloc>(context).fetchAllNotes();
                          },),
                        ],
                      ),

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:untitled11/constants.dart';
 import 'package:untitled11/controller/add_note/add_note_bloc.dart';
+import 'package:untitled11/controller/notes_bloc/notes_bloc.dart';
 import 'package:untitled11/controller/simple_bloc_observer.dart';
 import 'package:untitled11/model/note_model.dart';
 import 'package:untitled11/views/notes_screen.dart';
@@ -23,13 +24,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        fontFamily: 'Poppins'
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context)=>NotesBloc()),
+        BlocProvider(create: (context)=>AddNoteBloc()),
+
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          fontFamily: 'Poppins'
+        ),
+        debugShowCheckedModeBanner: false,
+        home: const NotesScreen()
       ),
-      debugShowCheckedModeBanner: false,
-      home: const NotesScreen()
     );
   }
 }
