@@ -6,26 +6,29 @@ import 'package:untitled11/views/widgets/custom_button.dart';
 import 'package:untitled11/views/widgets/custom_text_field.dart';
 import 'package:intl/intl.dart';
 
+import 'color_list_view.dart';
+
 class FormBottomSheet extends StatefulWidget {
   const FormBottomSheet({
     super.key,
-    required this.height,
+    required this.height
   });
 
   final double height;
-
   @override
   State<FormBottomSheet> createState() => _FormBottomSheetState();
 }
-DateTime now=DateTime.now();
-String dateFormat=DateFormat('dd-mm-yyyy').format(now);
+
+DateTime now = DateTime.now();
+String dateFormat = DateFormat('dd-mm-yyyy').format(now);
 String? title, subtitle;
+Color color = Colors.red;
 GlobalKey<FormState> formKey = GlobalKey();
 AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
-
 class _FormBottomSheetState extends State<FormBottomSheet> {
   @override
   Widget build(BuildContext context) {
+
     return Form(
       key: formKey,
       autovalidateMode: autoValidateMode,
@@ -73,9 +76,18 @@ class _FormBottomSheetState extends State<FormBottomSheet> {
           ),
           SizedBox(
             height: widget.height * 0.02,
+          ),
+      const ColorListView()
+      ,
+
+          SizedBox(
+            height: widget.height * 0.02,
           )
         ],
       ),
     );
   }
 }
+
+
+
