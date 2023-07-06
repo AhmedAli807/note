@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled11/controller/notes_bloc/notes_bloc.dart';
-import 'package:untitled11/views/widgets/custom_app_bar.dart';
 import 'package:untitled11/views/widgets/note_list_view.dart';
 
 class NotesScreenBody extends StatefulWidget {
@@ -25,8 +24,15 @@ class _NotesScreenBodyState extends State<NotesScreenBody> {
         vertical: 16
       ),
       child: Column(
-        children: const  [
-            CustomAppBar(title: 'Notes App',icon: Icons.search,),
+        children:   [
+            Row(
+              children:const  [
+                Text('Remember',
+                style: TextStyle(
+                  fontSize: 22
+                ),),
+              ],
+            ),
           NoteListView()
         ],
       ),

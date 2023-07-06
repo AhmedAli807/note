@@ -77,7 +77,9 @@ class _FormBottomSheetState extends State<FormBottomSheet> {
           SizedBox(
             height: widget.height * 0.02,
           ),
-      const ColorListView()
+     const  SizedBox(
+        height: 200,
+          child:  ColorListView())
       ,
 
           SizedBox(
